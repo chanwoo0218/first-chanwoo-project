@@ -1,40 +1,33 @@
-class Human {
-  final String name;
+class Strong {
+  final double strengthLevel = 1599.2;
+}
 
-  Human(this.name);
+class Tall {
+  final double height = 1.99;
+}
 
-  void sayHello() {
-    print("Hi my name is $name");
+class QuickRunner {
+  void run(){
+    print("ruuuuuuuun");
   }
 }
 
-enum Team {blue, red}
+enum Team{blue, red}
 
-class Player extends Human {
-  final Team team;
+class Player with Strong, Tall, QuickRunner {
+  Team team;
 
-  Player({
-    required this.team,
-    required String name,
-  }) : super(name);
+  Player({required this.team});
 
-  @override
-  void sayHello() {
-    super.sayHello();
-    print("and i play for $team");
-  }
 }
 
-/*class Coach extends Person { // 추상 클래스를 상속받음
-  void walk() { // 추상 메소드 재정의
-    print("Coach is walking");
-  }
-}*/
+class Horse with Strong, QuickRunner {}
+
+class kid with QuickRunner {}
 
 void main() {
   var player = Player(
-    name: "Chanwoo",
     team: Team.red,
   );
-  player.sayHello();
+  player.run();
 }
