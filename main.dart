@@ -1,48 +1,40 @@
-class Player {
-  String name;
-  int xp;
-  String team;
+class Human {
+  final String name;
 
-  Player({required this.name, required this.xp, required this.team});
-
-  Player.clone(Player player) :
-    this.name = player.name,
-    this.xp = player.xp,
-    this.team = player.team;
+  Human(this.name);
 
   void sayHello() {
     print("Hi my name is $name");
   }
 }
 
+enum Team {blue, red}
+
+class Player extends Human {
+  final Team team;
+
+  Player({
+    required this.team,
+    required String name,
+  }) : super(name);
+
+  @override
+  void sayHello() {
+    super.sayHello();
+    print("and i play for $team");
+  }
+}
+
+/*class Coach extends Person { // 추상 클래스를 상속받음
+  void walk() { // 추상 메소드 재정의
+    print("Coach is walking");
+  }
+}*/
+
 void main() {
-  var player = Player(name: 'coma', xp: 1200, team: 'blue');
-  var potato = player; //shallow copy
-  var tomato = Player.clone(player); //deep copy
-  potato.name = 'chanwoo';
-  potato.xp = 3500;
-  potato.team = 'red';
-  tomato.name = 'minwoo';
-  tomato.xp = 3500;
-  tomato.team = 'red';
-
+  var player = Player(
+    name: "Chanwoo",
+    team: Team.red,
+  );
   player.sayHello();
-  potato.sayHello();
-  tomato.sayHello();
-
-
-
-
- /* print("player id : ${player.hashCode}");
-  print("potato id : ${potato.hashCode}");
-  */
-
-
-
-
-  /* ..name = 'coma'
-  ..xp = 1600000
-  ..team = 'red'
-  ..sayHello();*/
-
 }
