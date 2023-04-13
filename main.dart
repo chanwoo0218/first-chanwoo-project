@@ -1,4 +1,4 @@
-class Strong {
+/*class Strong {
   final double strengthLevel = 1599.2;
 }
 
@@ -21,13 +21,32 @@ class Player with Strong, Tall, QuickRunner {
 
 }
 
+
 class Horse with Strong, QuickRunner {}
 
 class kid with QuickRunner {}
+*/
+
 
 void main() {
+  /*
   var player = Player(
     team: Team.red,
   );
   player.run();
+  */
+
+String capitalizeName(String? name) {
+
+if(name != null) {
+
+return name.toUpperCase();
+
+}
+
+return 'ANON';
+}
+
+print(capitalizeName(null));
+  
 }
